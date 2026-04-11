@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #B88E2F;
+  --color-primary-light: #C9A44A;
+  --color-primary-dark: #9A7625;
+  --color-dark: #333333;
+  --color-text: #666666;
+  --color-text-light: #9F9F9F;
+  --color-border: #E0E0E0;
+  --color-bg-light: #F5F5F5;
+  --color-cream: #FAF3EA;
+  --color-warm-bg: #F9F1E7;
+  --color-card-bg: #FFFFFF;
+  --color-sale-red: #E97171;
+  --color-success: #2EC1AC;
+  --font-heading: var(--font-playfair), serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-poppins: var(--font-poppins), sans-serif;
+}
