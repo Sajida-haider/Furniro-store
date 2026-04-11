@@ -34,7 +34,9 @@ export default function Chatbot() {
     setIsLoading(true);
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/chat/`, {
+      // Smart Logic: Check if API URL already has '/api' to avoid duplication
+      const endpoint = API_BASE_URL.endsWith('/api') ? '/chat/' : '/api/chat/';
+      const res = await fetch(`${API_BASE_URL}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMessage }),
