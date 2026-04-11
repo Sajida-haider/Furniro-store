@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { api } from '@/lib/api';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:8000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,9 +34,9 @@ export default function Chatbot() {
     setIsLoading(true);
 
     try {
-      // Smart Logic: Check if API URL already has '/api' to avoid duplication
-      const endpoint = API_BASE_URL.endsWith('/api') ? '/chat/' : '/api/chat/';
-      const res = await fetch(`${API_BASE_URL}${endpoint}`, {
+      // Clean URL: Remove trailing /api if present, then add /api/chat/
+      const cleanUrl = API_BASE_URL.replace(/\/api$/, '');
+      const res = await fetch(`${cleanUrl}/api/chat/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMessage }),
